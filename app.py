@@ -75,10 +75,45 @@ def get_output():
             print(entities[keys[i]]['url'])
     if len(result_news) > 0:
         label2.config(text='Here are 10 entities and their corresponding urls:')
-        for i in range(10):
-            link = Label(root, text=entities[keys[i]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
-            link.pack()
-            link.bind("<Button-1>", lambda e: callback(entities[keys[i]]['url']))
+        link1 = Label(root, text=entities[keys[0]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link1.pack()
+        link1.bind("<Button-1>", lambda e: callback(entities[keys[0]]['url']))
+
+        link2 = Label(root, text=entities[keys[1]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link2.pack()
+        link2.bind("<Button-1>", lambda e: callback(entities[keys[1]]['url']))
+
+        link3 = Label(root, text=entities[keys[2]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link3.pack()
+        link3.bind("<Button-1>", lambda e: callback(entities[keys[2]]['url']))
+
+        link4 = Label(root, text=entities[keys[3]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link4.pack()
+        link4.bind("<Button-1>", lambda e: callback(entities[keys[3]]['url']))
+
+        link5 = Label(root, text=entities[keys[4]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link5.pack()
+        link5.bind("<Button-1>", lambda e: callback(entities[keys[4]]['url']))
+
+        link6 = Label(root, text=entities[keys[5]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link6.pack()
+        link6.bind("<Button-1>", lambda e: callback(entities[keys[5]]['url']))
+
+        link7 = Label(root, text=entities[keys[6]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link7.pack()
+        link7.bind("<Button-1>", lambda e: callback(entities[keys[6]]['url']))
+
+        link8 = Label(root, text=entities[keys[7]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link8.pack()
+        link8.bind("<Button-1>", lambda e: callback(entities[keys[7]]['url']))
+
+        link9 = Label(root, text=entities[keys[8]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link9.pack()
+        link9.bind("<Button-1>", lambda e: callback(entities[keys[8]]['url']))
+
+        link10 = Label(root, text=entities[keys[9]]['url'],font=('Helveticabold', 15), fg="blue", cursor="hand2")
+        link10.pack()
+        link10.bind("<Button-1>", lambda e: callback(entities[keys[9]]['url']))
 
 button = Button(root, text="Submit", command=get_output)
 button.pack()
