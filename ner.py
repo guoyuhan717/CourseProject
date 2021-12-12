@@ -6,11 +6,11 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-device = 'cuda'
-TRANSFORMERS_CACHE = os.path.join(os.getenv('TRANSFORMERS_CACHE'),
-                                     "dslim/bert-base-NER") if 'TRANSFORMERS_CACHE' in os.environ else None
-
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# device = 'cuda'
+# TRANSFORMERS_CACHE = os.path.join(os.getenv('TRANSFORMERS_CACHE'),
+#                                      "dslim/bert-base-NER") if 'TRANSFORMERS_CACHE' in os.environ else None
+#
 
 def ner_sent(nlp, sent):
     # https://huggingface.co/dslim/bert-base-NER
@@ -75,31 +75,34 @@ def get_extensions(entities):
             res[ent] = {'url':entities[ent]['url'], 'extend':elist}
     return res
 
-if __name__ == "__main__":
-
-    docs = read_file('news_1(1).txt')
-
-    # NER: extract entities
-    tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER", cache_dir=TRANSFORMERS_CACHE)
-    model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER", cache_dir=TRANSFORMERS_CACHE)
-    nlp = pipeline("ner", model=model, tokenizer=tokenizer)
-
-
-    entities = set()
-    for doc in docs:
-        for sent in doc:
-            s = ' '.join(sent)
-            ner_res = ner_sent(nlp,s)
-            entities.update([e['word'] for e in ner_res])
-    print(len(entities))
-    print(entities)
-
-    # entikty linking
-    entities = get_urls(entities)
-    print(len(entities))
-    print(entities)
-
-    # entity extension
-    entities = get_extensions(entities)
-    print(len(entities))
-    print(entities)
+# if __name__ == "__main__":
+#
+#     docs = read_file('news_1(1).txt')
+#
+#     # NER: extract entities
+#     tokenizer = AutoTokenizer.from_pretrained("dslim/bert-base-NER", cache_dir=TRANSFORMERS_CACHE)
+#     model = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER", cache_dir=TRANSFORMERS_CACHE)
+#     nlp = pipeline("ner", model=model, tokenizer=tokenizer)
+#
+#
+#     entities = set()
+#     for doc in docs:
+#         for sent in doc:
+#             s = ' '.join(sent)
+#             ner_res = ner_sent(nlp,s)
+#             entities.update([e['word'] for e in ner_res])
+#     # print(len(entities))
+#     # print(entities)
+#
+#     # entikty linking
+#     entities = get_urls(entities)
+#     # print(len(entities))
+#     # print(entities)
+#
+#     # entity extension
+#     entities = get_extensions(entities)
+#     #print(type(entities))
+#     keys = list(entities.keys())
+#     #print(len(entities))
+#     for i in range(10):
+#         print(entities[keys[i]]['url'])
